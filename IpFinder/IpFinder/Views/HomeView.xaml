@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:BaseView  xmlns:views="clr-namespace:IpFinder.Views"
+                 xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:controls="clr-namespace:IpFinder.Controls"
+                 mc:Ignorable="d"
+                 BackgroundColor="Gray"
+                 x:Class="IpFinder.Views.HomeView">
+    <Grid RowSpacing="0"
+          ColumnSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="12*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="4*" />
+        </Grid.ColumnDefinitions>
+
+        <Frame Grid.Row="1"
+               Grid.Column="0"
+               Grid.RowSpan="2"
+               Grid.ColumnSpan="3"
+               BackgroundColor="White"
+               HasShadow="true"
+               CornerRadius="10"
+               Margin="40,0,40,40">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label Text="Ip Finder"
+                       HorizontalOptions="Center"
+                       FontSize="Title"
+                       Margin="20"
+                       Grid.Row="0"
+                       TextColor="Black" />
+                <StackLayout VerticalOptions="Center"
+                             Grid.Row="1">
+                    <Frame Padding="5,0,5,0"
+                           BorderColor="Black"
+                           CornerRadius="10">
+                        <controls:BorderlessEntry HorizontalTextAlignment="Center"
+                                                  Placeholder="Enter a Ip address to search"
+                                                  HeightRequest="50"
+                                                  Text="{Binding IpAddrress}" />
+                    </Frame>
+                    <Button Text="Search Ip address"
+                            CornerRadius="10"
+                            Margin="0,20,0,0"
+                            Command="{Binding NavigateCommand}"
+                            BackgroundColor="OrangeRed" />
+                    <Button Text="What is my ip"
+                            CornerRadius="10"
+                            Command="{Binding MyIpNavigateCommand}"
+                            BackgroundColor="OrangeRed" />
+                </StackLayout>
+            </Grid>
+        </Frame>
+        <Image VerticalOptions="Center"
+               HorizontalOptions="Center"
+               Grid.Row="0"
+               Grid.Column="1"
+               Grid.RowSpan="1"
+               Margin="0,0,0,-50"
+               Source="logo.png" />
+    </Grid>
+
+</views:BaseView>
+
+    

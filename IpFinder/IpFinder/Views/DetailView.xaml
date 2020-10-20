@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<views:BaseView  xmlns:views="clr-namespace:IpFinder.Views"
+                 xmlns="http://xamarin.com/schemas/2014/forms"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 mc:Ignorable="d"
+                 BackgroundColor="Gray"
+                 x:Class="IpFinder.Views.DetailView">
+    <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        <StackLayout Grid.Row="0">
+            <SearchBar Text="{Binding SearchKey}"
+                       VerticalOptions="Start"
+                       Placeholder="Enter a Ip address to search"
+                       BackgroundColor="White"
+                       SearchCommand="{Binding SearchCommand}">
+            </SearchBar>
+            <Frame Margin="40"
+                   HasShadow="True"
+                   CornerRadius="25">
+                <ScrollView VerticalOptions="CenterAndExpand"
+                            HorizontalOptions="Center">
+                    <StackLayout>
+                        <Label Text="{Binding Ip,StringFormat='Ip address : {0}'}"
+                               FontSize="Medium"
+                               TextColor="Black" />
+                        <Label Text="{Binding Country,StringFormat='Country : {0}'}"
+                               FontSize="Medium"
+                               TextColor="Black" />
+                        <Label Text="{Binding Region,StringFormat='Region : {0}'}"
+                               FontSize="Medium"
+                               TextColor="Black" />
+                        <Label Text="{Binding City,StringFormat='City : {0}'}"
+                               FontSize="Medium"
+                               TextColor="Black" />
+                        <Label Text="{Binding Zip,StringFormat='Zip code : {0}'}"
+                               FontSize="Medium"
+                               TextColor="Black" />
+                        <Label Text="{Binding Lat,StringFormat='Latitude : {0}'}"
+                               FontSize="Medium"
+                               TextColor="Black" />
+                        <Label Text="{Binding Lon,StringFormat='Longatitude : {0}'}"
+                               FontSize="Medium"
+                               TextColor="Black" />
+                        <Label Text="{Binding TimeZone,StringFormat='Time zone : {0}'}"
+                               FontSize="Medium"
+                               TextColor="Black" />
+                        <Label Text="{Binding ISP,StringFormat='Isp : {0}'}"
+                               FontSize="Medium"
+                               TextColor="Black" />
+                        <Label Text="{Binding Org,StringFormat='Org : {0}'}"
+                               FontSize="Medium"
+                               TextColor="Black" />
+                        <Label Text="{Binding As,StringFormat='As : {0}'}"
+                               FontSize="Medium"
+                               TextColor="Black" />
+                        <Button Text="View location in map"
+                                HorizontalOptions="FillAndExpand"
+                                CornerRadius="10"
+                                Margin="0,20,0,0"
+                                BackgroundColor="OrangeRed"
+                                Command="{Binding OpenMapCommand}" />
+                        <StackLayout.Triggers>
+                            <DataTrigger TargetType="StackLayout"
+                                         Binding="{Binding IsBusy}"
+                                         Value="True">
+                                <Setter Property="Opacity"
+                                        Value="0" />
+                            </DataTrigger>
+                        </StackLayout.Triggers>
+                    </StackLayout>
+                </ScrollView>
+            </Frame>
+        </StackLayout>
+        <ActivityIndicator Color="OrangeRed"
+                           Grid.Row="0"
+                           VerticalOptions="Center"
+                           IsRunning="{Binding IsBusy}"/>
+    </Grid>
+</views:BaseView>
